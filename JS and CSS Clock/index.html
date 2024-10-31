@@ -1,0 +1,37 @@
+<!-- Noah Sanchez OCT 30 2024-->
+<!-- Adapted From https://javascripts.com/
+JavaScript Drum Kit -->
+
+<!-- 
+  new elements: Digital Clock, Toggle Button, 
+  changed theme elements
+  
+  Being able to switch beween clocks and hidning the other
+  was the most challenging part of the assignment-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/✅" />
+</head>
+<body>
+  <button id="toggleButton">Digital Clock</button>
+
+  <div class="clock" id="analogClock">
+    <div class="clock-face">
+      <div class="hand hour-hand"></div>
+      <div class="hand min-hand"></div>
+      <div class="hand second-hand"></div>
+    </div>
+  </div>
+
+  <div class="digital-clock" id="digitalClock" style="display: none;">
+    <span id="digitalTime">00:00:00</span>
+  </div>
+
+  
+  <script src="script.js"> </script>
+</body>
+</html>
