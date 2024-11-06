@@ -1,0 +1,28 @@
+/*Noah Sanchez Nov. 6 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    padding-top: 20px;
+}
+
+section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.5;
+}

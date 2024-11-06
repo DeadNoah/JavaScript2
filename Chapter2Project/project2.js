@@ -1,26 +1,36 @@
-/*Noah Sanchez Oct. 23 */
-let myName = 'Noah';
-let para1 = document.getElementById("p1");
+/*Noah Sanchez Nov. 6 */
 
-para1.textContent = myName;
+let fullName = "Noah Sanchez";
+console.log("Full Name:", fullName);
+document.getElementById("p1").textContent = fullName;
 
-let n1 = 16;
-let n2 = 28;
-let numberSum = n1 + n2;
 
-document.getElementById("p2").textContent = numberSum;
+let desiredAnnualSalary = 75000;
+console.log("Desired Annual Salary:", desiredAnnualSalary);
+document.getElementById("p2").textContent = desiredAnnualSalary;
 
-let numberMult = n1 * n2;
-document.getElementById("p3").textContent = numberMult;
 
-let myNameAddNum = myName + numberSum;
-document.getElementById("p4").textContent = myNameAddNum
+let isVeteran = false;
+console.log("Veteran Status:", isVeteran);
+document.getElementById("p3").textContent = isVeteran;
 
-let myNameMultNum = myName * numberMult;
-document.getElementById("p5").textContent = myNameMultNum
 
-let myAge = 28
-let ageCompare = myAge > (n1 * n2);
+let friends = ["Jake", " Andrew", " Jared"];
+console.log("Friends' Names:", friends);
+document.getElementById("p4").textContent = friends;
 
-document.getElementById("p6").textContent = ageCompare;
+let friendsSalaries = [60000, 70000, 65000];
+console.log("Friends' Desired Annual Salaries:", friendsSalaries);
+document.getElementById("p5").textContent = friendsSalaries;
 
+
+let anotherFriend = {
+    firstName: "Cleo",
+    lastName: "Sanchez",
+    desiredSalary: 80000
+};
+console.log("Another Friend's Details:", anotherFriend);
+let friendInfoElement = document.getElementById("p6");
+friendInfoElement.textContent = 
+`Name: ${anotherFriend.firstName} ${anotherFriend.lastName}, 
+Desired Salary: $${anotherFriend.desiredSalary}`;
