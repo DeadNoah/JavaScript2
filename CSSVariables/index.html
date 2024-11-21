@@ -1,0 +1,48 @@
+<!-- Noah Sanchez NOV 20 2024-->
+<!-- Adapted From https://javascripts.com/
+ CSS Variable-->
+
+<!-- 
+  new elements: Creating dropdown menu for images applying changing variables
+  to images.
+  Creating a changing overlay effect
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Customizer</title>
+  <link rel="icon" href="https://fav.farm/✅" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Customize Image with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label for="photo">Select Photo:</label>
+    <select id="photo" name="photo">
+      <option value="https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">Cat</option>
+      <option value="https://images.unsplash.com/photo-1530525393181-2483a388767e?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">Bearded Dragon</option>
+      <option value="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">Dog</option>
+    </select>
+
+    <label for="size">Size:</label>
+    <input id="size" type="range" name="size" min="100" max="1000" value="800" data-sizing="px">
+
+    <label for="blur">Blur:</label>
+    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+    <label for="overlay">Overlay Color:</label>
+    <input id="overlay" type="color" name="overlay" value="#ffc600">
+  </div>
+
+  <div class="image-container">
+    <img id="dynamic-image" src="https://source.unsplash.com/7bwQXzbF6KE/800x500" alt="Dynamic Image">
+    <div class="overlay"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
