@@ -26,6 +26,18 @@ let currentTimezone = timeZones[currentTimezoneIndex];
 
 
 const weatherApiKey = '1641db9f6cc857948185f9b990bd689f'; 
+const unsplashApiKey = '7yMCNlxbpTm_MzhvZDDHJ90L7KTH-vm8PkX_pNKYLJk';
+
+const fallbackBackgrounds = {
+  'New York': 'https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?ixlib=rb-4.0.3&w=1920&q=80',
+  'Chicago': 'https://images.unsplash.com/photo-1494522855154-9297ac14b55f?ixlib=rb-4.0.3&w=1920&q=80',
+  'Denver': 'https://images.unsplash.com/photo-1476231682828-37e571bc172f?ixlib=rb-4.0.3&w=1920&q=80',
+  'Los Angeles': 'https://images.unsplash.com/photo-1470004914212-05527e49370b?ixlib=rb-4.0.3&w=1920&q=80',
+  'London': 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&w=1920&q=80',
+  'Paris': 'https://images.unsplash.com/photo-1431274172761-fca41d930114?ixlib=rb-4.0.3&w=1920&q=80',
+  'Tokyo': 'https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-4.0.3&w=1920&q=80',
+  'Sydney': 'https://images.unsplash.com/photo-1523428096881-5bd79d043006?ixlib=rb-4.0.3&w=1920&q=80'
+};
 
 
 function setDate() {
@@ -74,6 +86,27 @@ function nextTimezone() {
   setDate(); 
 }
 
+async function updateBackground(cityName, query) {
+  try {
+      if (!unsplashApiKey || unsplashApiKey === 'YOUR_UNSPLASH_API_KEY') {
+          throw new Error('No Unsplash API key provided');
+      }
+      
+      const response = await fetch(
+          `https://api.unsplash.com/photos/random?query=${encodeURIComponent(query)}&orientation=landscape&client_id=${unsplashApiKey}`
+      );
+      
+      if (!response.ok) throw new Error('Unsplash API error');
+      
+      const data = await response.json();
+      const imageUrl = data.urls.full;
+      document.documentElement.style.backgroundImage = `url(${imageUrl})`;
+  } catch (error) {
+      console.error('Error fetching background:', error);
+      document.documentElement.style.backgroundImage = `url(${fallbackBackgrounds[cityName]})`;
+  }
+}
+
 async function fetchWeather(cityId) {
   if (!weatherApiKey || weatherApiKey === 'YOUR_API_KEY') {
       weatherInfo.textContent = 'Please add your OpenWeatherMap API key';
@@ -109,6 +142,7 @@ timezoneButton.addEventListener('click', nextTimezone);
 
 
 locationInfo.textContent = `${currentTimezone.name} (${currentTimezone.tz})`;
+updateBackground(currentTimezone.name, currentTimezone.unsplashQuery);
 fetchWeather(currentTimezone.weatherId);
 setInterval(setDate, 1000);
 setDate();

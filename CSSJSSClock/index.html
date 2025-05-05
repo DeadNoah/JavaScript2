@@ -11,28 +11,28 @@ JavaScript Drum Kit -->
 </head>
 <body>
 
-  
-  <div class="clock" id="analogClock">
-    <div class="clock-face">
-      <div class="hand hour-hand"></div>
-      <div class="hand min-hand"></div>
-      <div class="hand second-hand"></div>
+  <div class="wrapper">
+    <div class="clock" id="analogClock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+    <div class="digital-clock" id="digitalClock" style="display: none;">
+      <span id="digitalTime">00:00:00</span>
+    </div>
+
+    <div class="location-info" id="locationInfo">New York, USA (EST)</div>
+    
+    <div class="weather-info" id="weatherInfo">Loading weather...</div>
+
+    <div class="controls">
+      <button id="toggleButton">Digital Clock</button>
+      <button id="timezoneButton">Next Timezone</button>
     </div>
   </div>
-
-  <div class="digital-clock" id="digitalClock" style="display: none;">
-    <span id="digitalTime">00:00:00</span>
-  </div>
-
-  <div class="location-info" id="locationInfo">New York, USA (EST)</div>
-  
-  <div class="weather-info" id="weatherInfo">Loading weather...</div>
-
-  <div class="controls">
-    <button id="toggleButton">Digital Clock</button>
-    <button id="timezoneButton">Next Timezone</button>
-  </div>
-
 
   
   <script src="script.js"> </script>
