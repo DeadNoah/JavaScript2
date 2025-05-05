@@ -11,15 +11,15 @@ const weatherInfo = document.getElementById('weatherInfo');
 
 
 const timeZones = [
-  { id: 'America/New_York', name: 'New York, USA', tz: 'EST', weatherId: 5128581 },
-  { id: 'America/Chicago', name: 'Chicago, USA', tz: 'CST', weatherId: 4887398 },
-  { id: 'America/Denver', name: 'Denver, USA', tz: 'MST', weatherId: 5419384 },
-  { id: 'America/Los_Angeles', name: 'Los Angeles, USA', tz: 'PST', weatherId: 5368361 },
-  { id: 'Europe/London', name: 'London, UK', tz: 'GMT', weatherId: 2643743 },
-  { id: 'Europe/Paris', name: 'Paris, France', tz: 'CET', weatherId: 2988507 },
-  { id: 'Asia/Tokyo', name: 'Tokyo, Japan', tz: 'JST', weatherId: 1850147 },
-  { id: 'Australia/Sydney', name: 'Sydney, Australia', tz: 'AEST', weatherId: 2147714 }
-];
+  { id: 'America/New_York', name: 'New York', country: 'USA', tz: 'EST', weatherId: 5128581, unsplashQuery: 'new york city' },
+  { id: 'America/Chicago', name: 'Chicago', country: 'USA', tz: 'CST', weatherId: 4887398, unsplashQuery: 'chicago skyline' },
+  { id: 'America/Denver', name: 'Denver', country: 'USA', tz: 'MST', weatherId: 5419384, unsplashQuery: 'denver landscape' },
+  { id: 'America/Los_Angeles', name: 'Los Angeles', country: 'USA', tz: 'PST', weatherId: 5368361, unsplashQuery: 'los angeles' },
+  { id: 'Europe/London', name: 'London', country: 'UK', tz: 'GMT', weatherId: 2643743, unsplashQuery: 'london' },
+  { id: 'Europe/Paris', name: 'Paris', country: 'France', tz: 'CET', weatherId: 2988507, unsplashQuery: 'paris' },
+  { id: 'Asia/Tokyo', name: 'Tokyo', country: 'Japan', tz: 'JST', weatherId: 1850147, unsplashQuery: 'tokyo' },
+  { id: 'Australia/Sydney', name: 'Sydney', country: 'Australia', tz: 'AEST', weatherId: 2147714, unsplashQuery: 'sydney' }
+]
 
 let currentTimezoneIndex = 0;
 let currentTimezone = timeZones[currentTimezoneIndex];
@@ -86,9 +86,24 @@ function nextTimezone() {
   setDate(); 
 }
 
+async function nextTimezone() {
+  currentTimezoneIndex = (currentTimezoneIndex + 1) % timeZones.length;
+  currentTimezone = timeZones[currentTimezoneIndex];
+
+  locationInfo.textContent = `${currentTimezone.name} (${currentTimezone.tz})`;
+  
+
+  await updateBackground(currentTimezone.name, currentTimezone.unsplashQuery);
+  await fetchWeather(currentTimezone.weatherId);
+  
+
+  setDate();
+}
+
+
 async function updateBackground(cityName, query) {
   try {
-      if (!unsplashApiKey || unsplashApiKey === 'YOUR_UNSPLASH_API_KEY') {
+      if (!unsplashApiKey || unsplashApiKey === '7yMCNlxbpTm_MzhvZDDHJ90L7KTH-vm8PkX_pNKYLJk') {
           throw new Error('No Unsplash API key provided');
       }
       
@@ -108,7 +123,7 @@ async function updateBackground(cityName, query) {
 }
 
 async function fetchWeather(cityId) {
-  if (!weatherApiKey || weatherApiKey === 'YOUR_API_KEY') {
+  if (!weatherApiKey || weatherApiKey === '7yMCNlxbpTm_MzhvZDDHJ90L7KTH-vm8PkX_pNKYLJk') {
       weatherInfo.textContent = 'Please add your OpenWeatherMap API key';
       return;
   }
