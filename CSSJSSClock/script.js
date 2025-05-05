@@ -107,7 +107,7 @@ async function fetchWeather(cityId) {
 toggleButton.addEventListener('click', toggleClock);
 timezoneButton.addEventListener('click', nextTimezone);
 
-// Initialize
+
 locationInfo.textContent = `${currentTimezone.name} (${currentTimezone.tz})`;
 fetchWeather(currentTimezone.weatherId);
 setInterval(setDate, 1000);
